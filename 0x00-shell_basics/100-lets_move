@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -o "[A-Z]" mv * /tmp/u 
+mv [[:upper:]]* /tmp/u 
