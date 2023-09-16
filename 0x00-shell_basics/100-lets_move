@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -name "*[A-Z]" -exec mv -t /tmp/u {} \;
+grep -o "[A-Z]" mv * /tmp/u 
