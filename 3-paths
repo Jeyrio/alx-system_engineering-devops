@@ -1,2 +1,2 @@
 #!/bin/bash
-PATH=$PATH:.|grep -c d 
+PATH=$PATH:.|ls -l | grep -c d 
