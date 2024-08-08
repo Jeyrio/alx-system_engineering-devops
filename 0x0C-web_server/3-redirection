@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Bash script that configure a ubuntu machine 
+# so that /redirect_me is redirecting to another page
+
+sudo apt-get update -y
+sudo apt-get install nginx -y
+sudo ufw allow '80'
+sh -c 'echo "Hello World!" > /var/www/html/index.html'
+sed -i '/listen 80 default_server/a rewrite ^/redriect_me https://www.youtube.com/@jeytech permanent;' /etc/nginx/sites-available/default 
+service nginx restart
