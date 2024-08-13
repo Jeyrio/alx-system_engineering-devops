@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
-# Bash script that configures an Ubuntu machine
+# Bash script that configure a ubuntu machine 
 # to create a custom 404 error page with the string "Ceci n'est pas une page"
+# the page must return HTTP 404 error code
 
-# Update package lists and install Nginx
 sudo apt-get update -y
 sudo apt-get install nginx -y
-
-# Create a custom 404 error page
-sudo sh -c 'echo "Ceci n\'est pas une page" > /var/www/html/custom_404.html'
-
-# Configure Nginx to use the custom 404 page
-sudo sed -i '/listen 80 default_server/a error_page 404 /custom_404.html;' /etc/nginx/sites-available/default
-sudo sed -i '/error_page 404 /custom_404.html/a location = /custom_404.html { internal; }' /etc/nginx/sites-available/default
-
-# Restart Nginx to apply changes
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
+sudo sh -c "echo "Ceci n\'est pas une page" > /var/www/html/404.html"
+sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://github.com/Jeyrio permanent;' /etc/nginx/sites-available/default
+sed -i '/listen 80 default_server/a error_page 404 /404.html;' /etc/nginx/sites-available/default
 sudo service nginx restart
-
