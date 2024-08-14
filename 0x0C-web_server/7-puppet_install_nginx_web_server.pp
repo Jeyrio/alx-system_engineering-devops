@@ -1,4 +1,4 @@
-#automating configuration with puppet
+#automating server configuration with puppet
 
 package { 'nginx':
   ensure => installed,
@@ -17,5 +17,5 @@ file {'/var/www/html/index.html':
 
 service { 'nginx':
   ensure  => running,
-  require => package{'nginx'},
+  require => package['nginx'],
 }
